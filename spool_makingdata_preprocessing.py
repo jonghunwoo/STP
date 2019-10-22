@@ -7,7 +7,7 @@ from statsmodels.formula.api import ols
 from sklearn import linear_model
 ########################################### MakingLT ###################################################################
 # Data 불러오기
-MakingData = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/data/makingdata.csv', engine = 'python')
+MakingData = pd.read_csv('./data/makingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del MakingData['Unnamed: 0']
@@ -113,5 +113,5 @@ plt.show()
 
 MakingData3 = MakingData3[['Emergency','ApplyLeadTime','STG','Service','DIA','Length','Pass','Sch','Material','Weight','MemberCount','JointCount','Making_Co','MakingLT']]
 
-MakingData3.to_csv('p_makingdata.csv', sep=',', na_rep='NaN', encoding='ms949')
+MakingData3.to_csv('./data/p_makingdata.csv', sep=',', na_rep='NaN', encoding='euc-kr')
 

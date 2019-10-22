@@ -7,7 +7,7 @@ from statsmodels.formula.api import ols
 
 ########################################### MakingLT ###################################################################
 # Data 불러오기
-PaintingData = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/data/paintingdata.csv', engine = 'python')
+PaintingData = pd.read_csv('./data/paintingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del PaintingData['Unnamed: 0']
@@ -114,5 +114,5 @@ plt.show()
 
 PaintingData3 = PaintingData3[['Emergency','ApplyLeadTime','STG','Service','DIA','Length','Pass','Sch','Material','Weight','MemberCount','JointCount','Making_Co','After2_Co','PaintingLT']]
 
-PaintingData3.to_csv('p_paintingdata.csv', sep=',', na_rep='NaN', encoding='ms949')
+PaintingData3.to_csv('./data/p_paintingdata.csv', sep=',', na_rep='NaN', encoding='euc-kr')
 

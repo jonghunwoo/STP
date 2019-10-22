@@ -5,7 +5,7 @@ import numpy as np
 
 ########################################################################################################################
 # Data 불러오기
-Raw_data = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/data/spooldata.csv',engine = 'python')
+Raw_data = pd.read_csv('./data/spooldata.csv', encoding='euc-kr')
 
 # Column 추출
 Raw_data = Raw_data[['REV날짜','BOM확정일','긴급 여부','적용L/T','BLOCK','STG','SER VICE','TAG NO','연번','SPOOL NO','대표문제점','Line No',
@@ -72,7 +72,7 @@ Raw_data = Raw_data.rename(columns={0:"MakingLT"})
 Raw_data = pd.concat([Raw_data,PaintingLT], axis = 1)
 Raw_data = Raw_data.rename(columns={0:"PaintingLT"})
 
-Raw_data.to_csv('p_spooldata.csv', sep=',', na_rep='NaN', encoding='ms949')
+Raw_data.to_csv('./data/p_spooldata.csv', sep=',', na_rep='NaN', encoding='euc-kr')
 
 ########################################################################################################################
 # MakingData
@@ -83,7 +83,7 @@ MakingData = Raw_data[['DIA', 'Length', 'Weight', 'MemberCount','JointCount','Em
 # MakingData 결측값 포함 행 삭제
 MakingData = MakingData.dropna(how = "any")
 
-MakingData.to_csv('makingdata.csv', sep=',', na_rep='NaN', encoding='ms949')
+MakingData.to_csv('./data/makingdata.csv', sep=',', na_rep='NaN', encoding='euc-kr')
 
 ########################################################################################################################
 # PaintingData
@@ -94,5 +94,5 @@ PaintingData = Raw_data[['DIA', 'Length', 'Weight', 'MemberCount','JointCount','
 # PaintingData 결측값 포함 행 삭제
 PaintingData = PaintingData.dropna(how = "any")
 
-PaintingData.to_csv('paintingdata.csv', sep=',', na_rep='NaN', encoding='ms949')
+PaintingData.to_csv('./data/paintingdata.csv', sep=',', na_rep='NaN', encoding='euc-kr')
 
