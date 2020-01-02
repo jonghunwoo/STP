@@ -1,3 +1,4 @@
+# 해당 파일은 기계학습의 다중 선형회귀분석 알고리즘을 적용한 학습모델을 구축하여 성능 확인을 수행
 # Package Load
 import pandas as pd
 import numpy as np
@@ -6,7 +7,7 @@ from sklearn import linear_model
 
 ########################################### MakingLT ###################################################################
 # Data 불러오기
-ri_MakingLT = pd.read_csv('./data/p_makingdata.csv',encoding='euc-kr')
+ri_MakingLT = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/p_makingdata.csv',engine = 'python')
 
 # 첫번째 Column 삭제
 del ri_MakingLT['Unnamed: 0']
@@ -14,7 +15,7 @@ del ri_MakingLT['Unnamed: 0']
 # Data Type 변경
 ri_MakingLT["Emergency"] = ri_MakingLT["Emergency"].astype(np.object)
 
-# One-hot encoding
+# One-hot encoding (범주형 데이터를 컴퓨터가 인식할 수 있는 형태 즉, 문자를 숫자로 변환하는 단계)
 ri_m_Emergency_one_hot_encoded = pd.get_dummies(ri_MakingLT.Emergency)
 ri_m_ApplyLeadTime_one_hot_encoded = pd.get_dummies(ri_MakingLT.ApplyLeadTime)
 ri_m_STG_one_hot_encoded = pd.get_dummies(ri_MakingLT.STG)
@@ -38,20 +39,23 @@ ri_m_Inputdata = pd.concat((ri_MakingLT[['DIA', 'Length', 'Weight', 'MemberCount
 
 ri_m_Outputdata = ri_MakingLT[['MakingLT']]
 
-# Vector로 변환 ; Deeplearning에서는 Vector 사용
+# 학습모델 구축을 위해 data형식을 Vector로 변환
 ri_X1 = ri_m_Inputdata.values
 ri_Y1 = ri_m_Outputdata.values
 
 # Training Data, Test Data 분리
 ri_X1_train, ri_X1_test, ri_Y1_train, ri_Y1_test = train_test_split(ri_X1, ri_Y1, test_size = 0.33, random_state = 42)
 
-# 선형회귀분석 모델 구축
+########################################################################################################################
+# 다중 선형회귀분석 학습 모델 구축
 making_regression_model = linear_model.LinearRegression()
 
 making_regression_model.fit(ri_X1_train, ri_Y1_train)
 
 ri_m_predicted = making_regression_model.predict(ri_X1_test)
+ri_m_predicted[ri_m_predicted<0] = 0
 
+# 학습 모델 성능 확인
 ri_m_mae = abs(ri_m_predicted - ri_Y1_test).mean(axis=0)
 ri_m_mape = (np.abs((ri_m_predicted - ri_Y1_test) / ri_Y1_test).mean(axis=0))
 ri_m_rmse = np.sqrt(((ri_m_predicted - ri_Y1_test) ** 2).mean(axis=0))
@@ -64,12 +68,12 @@ print(ri_m_rmsle)
 
 ########################################### PaintingLT #################################################################
 # Data 불러오기
-ri_PaintingLT = pd.read_csv('./data/p_paintingdata.csv',encoding='euc-kr')
+ri_PaintingLT = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/p_paintingdata.csv',engine = 'python')
 
 # 첫번째 Column 삭제
 del ri_PaintingLT['Unnamed: 0']
 
-# One-hot encoding
+# One-hot encoding (범주형 데이터를 컴퓨터가 인식할 수 있는 형태 즉, 문자를 숫자로 변환하는 단계)
 ri_p_Emergency_one_hot_encoded = pd.get_dummies(ri_PaintingLT.Emergency)
 ri_p_ApplyLeadTime_one_hot_encoded = pd.get_dummies(ri_PaintingLT.ApplyLeadTime)
 ri_p_STG_one_hot_encoded = pd.get_dummies(ri_PaintingLT.STG)
@@ -95,20 +99,23 @@ ri_p_Inputdata = pd.concat((ri_PaintingLT[['DIA', 'Length', 'Weight', 'MemberCou
 
 ri_p_Outputdata = ri_PaintingLT[['PaintingLT']]
 
-# Vector로 변환 ; Deeplearning에서는 Vector 사용
+# 학습모델 구축을 위해 data형식을 Vector로 변환
 ri_X2 = ri_p_Inputdata.values
 ri_Y2 = ri_p_Outputdata.values
 
 # Training Data, Test Data 분리
 ri_X2_train, ri_X2_test, ri_Y2_train, ri_Y2_test = train_test_split(ri_X2, ri_Y2, test_size = 0.33, random_state = 42)
 
-# 선형회귀분석 모델 구축
+########################################################################################################################
+# 다중 선형회귀분석 학습 모델 구축
 painting_regression_model = linear_model.LinearRegression()
 
 painting_regression_model.fit(ri_X2_train, ri_Y2_train)
 
 ri_p_predicted = painting_regression_model.predict(ri_X2_test)
+ri_p_predicted[ri_p_predicted<0] = 0
 
+# 학습 모델 성능 확인
 ri_p_mae = abs(ri_p_predicted - ri_Y2_test).mean(axis=0)
 ri_p_mape = (np.abs((ri_p_predicted - ri_Y2_test) / ri_Y2_test).mean(axis=0))
 ri_p_rmse = np.sqrt(((ri_p_predicted - ri_Y2_test) ** 2).mean(axis=0))
@@ -122,10 +129,8 @@ print(ri_p_rmsle)
 ########################################################################################################################
 # 분석결과 저장
 ri_evaluation = {'MAE' :  [ri_m_mae[0], ri_p_mae[0]], 'MAPE' :  [ri_m_mape[0], ri_p_mape[0]], 'RMSE' :  [ri_m_rmse[0], ri_p_rmse[0]], 'RMSLE' : [ri_m_rmsle[0], ri_p_rmsle[0]]}
-
 ri_evaluation = pd.DataFrame(ri_evaluation, index = ['making_regression','painting_regression'])
-
 print(ri_evaluation)
 
 # 분석결과 .csv 파일 저장
-ri_evaluation.to_csv('./data/spool_regression_conclusion.csv', sep=',', na_rep='NaN')
+ri_evaluation.to_csv('spool_regression_conclusion.csv', sep=',', na_rep='NaN')
