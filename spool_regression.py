@@ -7,7 +7,7 @@ from sklearn import linear_model
 
 ########################################### MakingLT ###################################################################
 # Data 불러오기
-ri_MakingLT = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/p_makingdata.csv',engine = 'python')
+ri_MakingLT = pd.read_csv('./data/p_makingdata.csv',encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del ri_MakingLT['Unnamed: 0']
@@ -68,7 +68,7 @@ print(ri_m_rmsle)
 
 ########################################### PaintingLT #################################################################
 # Data 불러오기
-ri_PaintingLT = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/p_paintingdata.csv',engine = 'python')
+ri_PaintingLT = pd.read_csv('./data/p_paintingdata.csv',encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del ri_PaintingLT['Unnamed: 0']
@@ -133,4 +133,4 @@ ri_evaluation = pd.DataFrame(ri_evaluation, index = ['making_regression','painti
 print(ri_evaluation)
 
 # 분석결과 .csv 파일 저장
-ri_evaluation.to_csv('spool_regression_conclusion.csv', sep=',', na_rep='NaN')
+ri_evaluation.to_csv('./data/spool_regression_conclusion.csv', sep=',', na_rep='NaN')

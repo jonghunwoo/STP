@@ -10,7 +10,7 @@ import statsmodels.formula.api as ols
 
 ########################################################################################################################
 # Data 불러오기
-Raw_data = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/spooldata.csv',engine = 'python')
+Raw_data = pd.read_csv('./data/spooldata.csv', encoding='euc-kr')
 
 # Raw Data에서 필요한 Column 추출
 Raw_data = Raw_data[['REV날짜','BOM확정일','긴급 여부','적용L/T','BLOCK','STG','SER VICE','TAG NO','연번','SPOOL NO','대표문제점','Line No',
@@ -97,7 +97,7 @@ Raw_data = pd.concat([Raw_data,PaintingLT], axis = 1)
 Raw_data = Raw_data.rename(columns={0:"PaintingLT"})
 
 # 처리한 spool data를 .csv 파일로 저장
-Raw_data.to_csv('p_spooldata.csv', sep=',', na_rep='NaN', encoding='ms949')
+Raw_data.to_csv('./data/p_spooldata.csv', sep=',', na_rep='NaN', encoding='euc-kr')
 
 ########################################################################################################################
 # 상관분석
@@ -170,7 +170,7 @@ MakingData = Raw_data[['DIA', 'Length', 'Weight', 'MemberCount','JointCount','Em
 MakingData = MakingData.dropna(how = "any")
 
 # MakingData .csv파일로 저장
-MakingData.to_csv('makingdata.csv', sep=',', na_rep='NaN', encoding='ms949')
+MakingData.to_csv('./data/makingdata.csv', sep=',', na_rep='NaN', encoding='euc-kr')
 
 ########################################### PaintingLT #################################################################
 # PaintingData column 확정
@@ -182,5 +182,5 @@ PaintingData = Raw_data[['DIA', 'Length', 'Weight', 'MemberCount','JointCount','
 PaintingData = PaintingData.dropna(how = "any")
 
 # PaintingData .csv파일로 저장
-PaintingData.to_csv('paintingdata.csv', sep=',', na_rep='NaN', encoding='ms949')
+PaintingData.to_csv('./data/paintingdata.csv', sep=',', na_rep='NaN', encoding='euc-kr')
 
