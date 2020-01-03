@@ -87,7 +87,7 @@ print(ST2_m_rmse)
 print(ST2_m_rmsle)
 
 ########################################################################################################################
-# Stacking 모델 구축 (randomforest + gradient boost +xgboost - classifier)
+# Stacking 모델 구축 (randomforest + gradient boost + xgboost - classifier)
 making_stacking_model11 = [
     RandomForestClassifier(max_depth=20, n_estimators=100, random_state=42),
     GradientBoostingClassifier(max_depth=20, n_estimators=100, random_state=42),

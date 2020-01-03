@@ -8,7 +8,7 @@ from statsmodels.formula.api import ols
 
 ########################################### MakingLT ###################################################################
 # Data 불러오기
-PaintingData = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/paintingdata.csv', engine = 'python')
+PaintingData = pd.read_csv('./data/paintingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del PaintingData['Unnamed: 0']
@@ -105,4 +105,4 @@ plt.title('Histogram of PaintingLT')
 plt.show()
 
 # 전처리 된 PaintingData .csv파일로 저장
-PaintingData4.to_csv('p_paintingdata.csv', sep=',', na_rep='NaN', encoding='ms949')
+PaintingData4.to_csv('./data/p_paintingdata.csv', sep=',', na_rep='NaN', encoding='euc-kr')

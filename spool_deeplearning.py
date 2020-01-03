@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 
 ########################################### MakingLT ###################################################################
 # Data 불러오기
-dl_MakingLT = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/p_makingdata.csv',engine = 'python')
+dl_MakingLT = pd.read_csv('./data/p_makingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del dl_MakingLT['Unnamed: 0']
@@ -104,7 +104,7 @@ making_deeplearning_model.save('making_DL_model.h5')
 
 ########################################### PaintingLT #################################################################
 # Data 불러오기
-dl_PaintingLT = pd.read_csv('C:/Users/MFS/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/p_paintingdata.csv',engine = 'python')
+dl_PaintingLT = pd.read_csv('./data/p_paintingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del dl_PaintingLT['Unnamed: 0']
@@ -205,4 +205,4 @@ dl_evaluation = pd.DataFrame(dl_evaluation, index = ['making_deeplearning','pain
 print(dl_evaluation)
 
 # 분석결과 .csv 파일 저장
-dl_evaluation.to_csv('spool_deeplearning_conclusion.csv', sep=',', na_rep='NaN')
+dl_evaluation.to_csv('./data/spool_deeplearning_conclusion.csv', sep=',', na_rep='NaN', encoding='euc-kr')

@@ -7,7 +7,7 @@ from sklearn.tree import DecisionTreeRegressor
 
 ########################################### MakingLT ###################################################################
 # Data 불러오기
-dt_MakingLT = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/p_makingdata.csv',engine = 'python')
+dt_MakingLT = pd.read_csv('./data/p_makingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del dt_MakingLT['Unnamed: 0']
@@ -72,7 +72,7 @@ print(dt_m_rmsle)
 
 ########################################### PaintingLT #################################################################
 # Data 불러오기
-dt_PaintingLT = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/p_paintingdata.csv',engine = 'python')
+dt_PaintingLT = pd.read_csv('./data/p_paintingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del dt_PaintingLT['Unnamed: 0']
@@ -144,4 +144,4 @@ dt_evaluation = pd.DataFrame(dt_evaluation, index = ['making_decisiontree','pain
 print(dt_evaluation)
 
 # 분석결과 .csv 파일 저장
-dt_evaluation.to_csv('spool_decisiontree_conclusion.csv', sep=',', na_rep='NaN')
+dt_evaluation.to_csv('./data/spool_decisiontree_conclusion.csv', sep=',', na_rep='NaN', encoding='euc-kr')

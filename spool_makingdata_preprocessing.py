@@ -8,7 +8,7 @@ from statsmodels.formula.api import ols
 
 ########################################### MakingLT ###################################################################
 # Data 불러오기
-MakingData = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/makingdata.csv', engine = 'python')
+MakingData = pd.read_csv('./data/makingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del MakingData['Unnamed: 0']
@@ -104,4 +104,4 @@ plt.title('Histogram of MakingLT')
 plt.show()
 
 # 전처리 된 MakingData .csv파일로 저장
-MakingData4.to_csv('p_makingdata.csv', sep=',', na_rep='NaN', encoding='ms949')
+MakingData4.to_csv('./data/p_makingdata.csv', sep=',', na_rep='NaN', encoding='euc-kr')

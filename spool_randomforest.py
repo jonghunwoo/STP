@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 ########################################### MakingLT ###################################################################
 # Data 불러오기
-rf_MakingLT = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/p_makingdata.csv',engine = 'python')
+rf_MakingLT = pd.read_csv('./data/p_makingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del rf_MakingLT['Unnamed: 0']
@@ -72,7 +72,7 @@ print(rf_m_rmsle)
 
 ########################################### PaintingLT #################################################################
 # Data 불러오기
-rf_PaintingLT = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/p_paintingdata.csv',engine = 'python')
+rf_PaintingLT = pd.read_csv('./data/p_paintingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del rf_PaintingLT['Unnamed: 0']
@@ -144,4 +144,4 @@ rf_evaluation = pd.DataFrame(rf_evaluation, index = ['making_randomforest','pain
 print(rf_evaluation)
 
 # 분석결과 .csv 파일 저장
-rf_evaluation.to_csv('spool_randomforest_conclusion.csv', sep=',', na_rep='NaN')
+rf_evaluation.to_csv('./data/spool_randomforest_conclusion.csv', sep=',', na_rep='NaN', encoding='euc-kr')

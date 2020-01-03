@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 
 ########################################### MakingLT ###################################################################
 # Data 불러오기
-dl_MakingLT = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/data/p_makingdata.csv',engine = 'python')
+dl_MakingLT = pd.read_csv('./data/p_makingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del dl_MakingLT['Unnamed: 0']
@@ -69,7 +69,7 @@ print(dl_m_rmsle)
 
 ########################################### PaintingLT #################################################################
 # Data 불러오기
-dl_PaintingLT = pd.read_csv('C:/Users/JJH/Desktop/JJH_KMOU/Study/2. Python/spool_pycharm/data/p_paintingdata.csv',engine = 'python')
+dl_PaintingLT = pd.read_csv('./data/p_paintingdata.csv', encoding='euc-kr')
 
 # 첫번째 Column 삭제
 del dl_PaintingLT['Unnamed: 0']

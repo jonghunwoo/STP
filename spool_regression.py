@@ -133,4 +133,4 @@ ri_evaluation = pd.DataFrame(ri_evaluation, index = ['making_regression','painti
 print(ri_evaluation)
 
 # 분석결과 .csv 파일 저장
-ri_evaluation.to_csv('./data/spool_regression_conclusion.csv', sep=',', na_rep='NaN')
+ri_evaluation.to_csv('./data/spool_regression_conclusion.csv', sep=',', na_rep='NaN', encoding='euc-kr')

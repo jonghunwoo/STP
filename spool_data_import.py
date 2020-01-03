@@ -98,7 +98,7 @@ Raw_data = Raw_data.rename(columns={0:"PaintingLT"})
 
 # 처리한 spool data를 .csv 파일로 저장
 Raw_data.to_csv('./data/p_spooldata.csv', sep=',', na_rep='NaN', encoding='euc-kr')
-
+#print(Raw_data.head())
 ########################################################################################################################
 # 상관분석
 ContinuousData = Raw_data[['DIA','Length','Weight','MemberCount','JointCount','MakingLT','PaintingLT']]
@@ -171,6 +171,7 @@ MakingData = MakingData.dropna(how = "any")
 
 # MakingData .csv파일로 저장
 MakingData.to_csv('./data/makingdata.csv', sep=',', na_rep='NaN', encoding='euc-kr')
+#print(MakingData.head())
 
 ########################################### PaintingLT #################################################################
 # PaintingData column 확정
@@ -181,6 +182,6 @@ PaintingData = Raw_data[['DIA', 'Length', 'Weight', 'MemberCount','JointCount','
 # PaintingData 결측값 포함 행 삭제
 PaintingData = PaintingData.dropna(how = "any")
 
-# PaintingData .csv파일로 저장
+#PaintingData .csv파일로 저장
 PaintingData.to_csv('./data/paintingdata.csv', sep=',', na_rep='NaN', encoding='euc-kr')
 
